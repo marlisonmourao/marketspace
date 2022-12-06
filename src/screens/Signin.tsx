@@ -1,28 +1,29 @@
-import { ScrollView, VStack, Text, Center, Image, Heading } from 'native-base'
+import {
+  ScrollView,
+  VStack,
+  Text,
+  Center,
+  Image,
+  Heading,
+  Box,
+} from "native-base";
 
-import logo from '@assets/logo.png'
-
-import { Input } from '@components/Input'
-
+import { Input } from "@components/Input";
+import { Button } from "@components/Button";
+import { Logo } from "@components/Logo";
 
 export function Signin() {
-  return(
-    <ScrollView contentContainerStyle={{ flexGrow: 1}} showsVerticalScrollIndicator={false}>
-      <VStack flex={1} px={10} bg='gray.600'>
+  return (
+    <ScrollView
+      contentContainerStyle={{ flexGrow: 1 }}
+      showsVerticalScrollIndicator={false}
+    >
+      <VStack flex={1} px={10} bg="gray.600">
         <Center my={16}>
-          <Image 
-            source={logo}
-            alt='Logo'
-            mb={17}
+          <Logo
+            title="marketspace"
+            subTitle="Seu espaço de compra e venda"
           />
-
-          <Heading fontSize="3xl" fontFamily="heading">
-            marketspace
-          </Heading>
-
-          <Text fontFamily="body" fontSize="2xl" lineHeight='md'>
-            Seu espaço de compra e venda
-          </Text>
         </Center>
 
         <Center px={12} mb={4}>
@@ -31,17 +32,24 @@ export function Signin() {
           </Text>
         </Center>
 
-        <Input
-          placeholder='E-mail'
-        />
+        <Box  mb={8}>
+          <Input placeholder="E-mail" />
 
-        <Input
-          placeholder='Senha'
-          secureTextEntry
-          mt={4}
-        />
+          <Input placeholder="Senha" secureTextEntry mt={4}/>
+        </Box>
 
+        <Button title="Entrar" variant="primary" />
+
+        <Center mt={32}>
+          <Text color="gray.200" fontSize="sm" fontFamily="body" mb={4}>
+            Ainda não tem acesso?
+          </Text>
+
+          <Button 
+            title="Criar uma conta"
+          />
+        </Center>
       </VStack>
     </ScrollView>
-  )
+  );
 }
