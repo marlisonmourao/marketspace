@@ -33,9 +33,13 @@ export function SignUp() {
 
           <Input placeholder="Telefone" />
 
-          <Input placeholder="Senha" />
+          <Input placeholder="Senha"
+           securityText
+          />
 
-          <Input placeholder="Confirma senha" />
+          <Input placeholder="Confirma senha"
+           securityText
+          />
         </VStack>
 
         <Button title="Criar" variant="secondary" />

@@ -3,8 +3,6 @@ import {
   VStack,
   Text,
   Center,
-  Image,
-  Heading,
   Box,
 } from "native-base";
 
@@ -35,7 +33,7 @@ export function Signin() {
         <Box  mb={8}>
           <Input placeholder="E-mail" />
 
-          <Input placeholder="Senha" secureTextEntry mt={4}/>
+          <Input placeholder="Senha" securityText mt={4}/>
         </Box>
 
         <Button title="Entrar" variant="primary" />

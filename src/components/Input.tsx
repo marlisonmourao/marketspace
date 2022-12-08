@@ -1,10 +1,15 @@
-import { Eye } from "phosphor-react-native";
-import { Input as NativeInput, IInputProps, HStack, Box } from "native-base";
+import { useState } from "react";
+import { Eye, EyeSlash } from "phosphor-react-native";
+import { Input as NativeInput, IInputProps, Box } from "native-base";
 import { TouchableOpacity } from "react-native";
 
-type Props = IInputProps & {};
+type Props = IInputProps & {
+  securityText?: boolean;
+};
 
-export function Input({ ...rest }: Props) {
+export function Input({ securityText, ...rest }: Props) {
+  const [isVisible, setIsVisible] = useState(true);
+
   return (
     <Box
       alignItems="center"
@@ -22,17 +27,27 @@ export function Input({ ...rest }: Props) {
         px={4}
         placeholderTextColor="gray.400"
         fontSize="sm"
+        secureTextEntry={isVisible}
         fontFamily="body"
         _focus={{
           borderWidth: 1,
-          borderColor: "gray.200"
+          borderColor: "gray.200",
         }}
         {...rest}
       />
 
-      <TouchableOpacity style={{ position: 'absolute', right: 12 }}>
-        <Eye color="#5F5B62" size={23} />
-      </TouchableOpacity>
+      {securityText && (
+        <TouchableOpacity
+          style={{ position: "absolute", right: 12 }}
+          onPress={() => setIsVisible(!isVisible)}
+        >
+          {isVisible ? (
+            <EyeSlash color="#5F5B62" size={23} />
+          ) : (
+            <Eye color="#5F5B62" size={23} />
+          )}
+        </TouchableOpacity>
+      )}
     </Box>
   );
 }
