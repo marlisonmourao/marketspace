@@ -1,13 +1,16 @@
-import { Logo } from "@components/Logo";
-import { Center, Text, ScrollView, VStack } from "native-base";
+import { PencilSimpleLine } from 'phosphor-react-native';
 
-import { UserPhoto } from "@components/UserPhoto";
+import { Center, Text, ScrollView, VStack, Icon, HStack, Pressable } from 'native-base';
 
-import userDefault from "@assets/userDefault.png";
-import { Input } from "@components/Input";
-import { Button } from "@components/Button";
+import userDefault from '@assets/userDefault.png';
+
+import { Input } from '@components/Input';
+import { Logo } from '@components/Logo';
+import { UserPhoto } from '@components/UserPhoto';
+import { Button } from '@components/Button';
 
 export function SignUp() {
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
@@ -23,7 +26,25 @@ export function SignUp() {
         </Center>
 
         <Center mt={8}>
-          <UserPhoto size={24} alt="Image user" source={userDefault} />
+          <HStack alignItems="flex-end">
+            <UserPhoto size={24} alt="Image user" source={userDefault} />
+
+            <Center 
+              w={10} 
+              h={10} 
+              bg="blue.400" 
+              rounded={20} 
+              position="absolute"
+              right={0.5}
+            >
+              <Pressable>
+                <PencilSimpleLine  
+                  size={20}
+                  color="#EDECEE"
+                />
+              </Pressable>
+            </Center>
+          </HStack>
         </Center>
 
         <VStack mt={4} mb={6}>
@@ -33,13 +54,9 @@ export function SignUp() {
 
           <Input placeholder="Telefone" />
 
-          <Input placeholder="Senha"
-           securityText
-          />
+          <Input placeholder="Senha" securityText />
 
-          <Input placeholder="Confirma senha"
-           securityText
-          />
+          <Input placeholder="Confirma senha" securityText />
         </VStack>
 
         <Button title="Criar" variant="secondary" />
