@@ -4,11 +4,11 @@ import {
   Text,
   Center,
   Box,
-} from "native-base";
+} from 'native-base';
 
-import { Input } from "@components/Input";
-import { Button } from "@components/Button";
-import { Logo } from "@components/Logo";
+import { Input } from '@components/Input';
+import { Button } from '@components/Button';
+import { Logo } from '@components/Logo';
 
 export function Signin() {
   return (

@@ -27,7 +27,11 @@ export function SignUp() {
 
         <Center mt={8}>
           <HStack alignItems="flex-end">
-            <UserPhoto size={24} alt="Image user" source={userDefault} />
+            <UserPhoto 
+              size={24} 
+              alt="Image user" 
+              source={userDefault} 
+            />
 
             <Center 
               w={10} 

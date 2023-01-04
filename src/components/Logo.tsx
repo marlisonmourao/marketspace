@@ -1,4 +1,4 @@
-import { Image, Heading, Text, Box } from "native-base";
+import { Image, Heading, Text } from "native-base";
 
 import logo from "@assets/logo.png";
 
