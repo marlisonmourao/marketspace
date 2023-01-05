@@ -5,6 +5,7 @@ export const theme = extendTheme({
     blue: {
       700: '#364D9D',
       400: '#647AC7',
+      100: ' rgba(100, 122, 199, 0.1)'
     },
 
     red: {
