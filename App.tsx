@@ -4,7 +4,7 @@ import { useFonts, Karla_400Regular, Karla_700Bold } from '@expo-google-fonts/ka
 
 import { theme } from './src/theme';
 import { Loading } from '@components/Loading';
-import { Home } from '@screens/Home';
+import { Home } from '@screens/Home/index';
 
 export default function App() {
 
