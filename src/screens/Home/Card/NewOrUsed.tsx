@@ -14,7 +14,7 @@ export function NewOrUsed({bgColor}: Props) {
       justifyContent="center"
       alignItems="center"
     >
-      <Text fontFamily="heading" fontSize="xs" color="white.100">
+      <Text fontFamily="heading" fontSize="xs" color="white">
         NOVO
       </Text>
     </Box>

@@ -1,13 +1,16 @@
 import { useState, useRef } from 'react'
 
-import { Button, FormControl, HStack, Input, Modal } from "native-base";
+import { Button, Text, Modal, HStack, IconButton, Pressable, IPressableProps, Center, Heading } from "native-base";
+import { XCircle } from 'phosphor-react-native';
 
-type Props = {
+type Props  = IPressableProps & {
   modalVisible: boolean;
   setModalVisible: (modalVisible: boolean) => void;
 }
 
 export function ModalFilter({modalVisible, setModalVisible}: Props) {
+  const [isActive, setIsActive] = useState(false)
+
   const initialRef = useRef(null);
   const finalRef = useRef(null);
 
@@ -15,16 +18,59 @@ export function ModalFilter({modalVisible, setModalVisible}: Props) {
       <Modal isOpen={modalVisible} flex={1} justifyContent="flex-end" onClose={() => setModalVisible(false)} initialFocusRef={initialRef} finalFocusRef={finalRef}>
         <Modal.Content  w="full">
           <Modal.CloseButton />
-          <Modal.Header>Contact </Modal.Header>
+          <Modal.Header>
+            <Text
+              fontFamily="heading"
+              color="gray.100"  
+              fontSize="xl"
+            >
+              Filtrar anúncios
+            </Text>
+          </Modal.Header>
           <Modal.Body>
-            <FormControl>
-              <FormControl.Label>Name</FormControl.Label>
-              <Input ref={initialRef} />
-            </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>Email</FormControl.Label>
-              <Input />
-            </FormControl>
+
+            <Text
+              fontFamily="heading"
+              color="gray.200"  
+              fontSize="md"
+            >
+             Condição
+            </Text>
+
+            <HStack>
+              <Pressable 
+                onPress={() => setIsActive(!isActive)}
+                borderRadius="full"
+                bg='gray.500'
+                w={17}
+                h={8}
+                isPressed={isActive}
+                alignItems="center"
+                justifyContent="center"
+                _pressed={{
+                  bg: 'blue.400'
+                }}
+              >
+
+                <HStack alignItems="center" w="full" justifyContent="center">
+                  <Heading
+                    color={isActive ? 'white' : 'gray.300'} 
+                    fontFamily="heading"
+                    fontSize="xs" 
+                  >
+                    NOVO
+                  </Heading>
+
+                  {
+                    isActive && 
+                    <Pressable paddingLeft={1}>
+                      <XCircle size={18} color="white"/>
+                    </Pressable>
+                  }
+                </HStack>
+              </Pressable>
+            </HStack>
+
           </Modal.Body>
           <Modal.Footer>
             <Button.Group space={2}>
@@ -43,38 +89,5 @@ export function ModalFilter({modalVisible, setModalVisible}: Props) {
         </Modal.Content>
       </Modal>
 
-      
-      {/* <HStack space="4" justifyContent="center" alignItems="center">
-        <Button onPress={() => {
-        setModalVisible(!modalVisible);
-      }}>
-          Open Modal
-        </Button>
-        <Input w="32" ref={finalRef} placeholder="Enter the OTP" _light={{
-        placeholderTextColor: "blueGray.700"
-      }} _dark={{
-        placeholderTextColor: "blueGray.100"
-      }} />
-      </HStack> */}
     </>;
 }
-
-const styles = {
-  top: {
-    marginBottom: "auto",
-    marginTop: 0
-  },
-  bottom: {
-    marginBottom: 0,
-    marginTop: "auto"
-  },
-  left: {
-    marginLeft: 0,
-    marginRight: "auto"
-  },
-  right: {
-    marginLeft: "auto",
-    marginRight: 0
-  },
-  center: {}
-};

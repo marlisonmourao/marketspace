@@ -22,9 +22,7 @@ export const theme = extendTheme({
       700: '#F7F7F8'
     },
 
-    white: {
-      100: '#FFFFFF'
-    }
+    white: '#FFFFFF'
   },
   fonts: {
     heading: 'Karla_700Bold',
@@ -46,6 +44,7 @@ export const theme = extendTheme({
 
   sizes: {
     14: 56,
+    17: 72,
     25: 100,
     33: 136,
     34: 152,

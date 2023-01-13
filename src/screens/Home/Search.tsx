@@ -5,7 +5,7 @@ import { MagnifyingGlass, Faders } from "phosphor-react-native";
 import { ModalFilter } from './ModalFilter';
 
 export function Search() {
-  const [modalIsVisible, setModalIsVisible] = useState(false)
+  const [modalIsVisible, setModalIsVisible] = useState(false);
 
   return (
     <Box bg="gray.700">

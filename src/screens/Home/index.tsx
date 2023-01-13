@@ -105,6 +105,7 @@ export function Home() {
                   title={item.title}
                   amount={item.amount}
                   newOrUsed={item.newOrUsed} 
+                  
                 />
             )}
             _contentContainerStyle={{
