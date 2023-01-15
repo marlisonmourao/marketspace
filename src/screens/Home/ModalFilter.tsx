@@ -1,93 +1,101 @@
-import { useState, useRef } from 'react'
+import { useState, useRef } from "react";
 
-import { Button, Text, Modal, HStack, IconButton, Pressable, IPressableProps, Center, Heading } from "native-base";
-import { XCircle } from 'phosphor-react-native';
+import {
+  Button,
+  Text,
+  Modal,
+  HStack,
+  IconButton,
+  Pressable,
+  IPressableProps,
+  Center,
+  Heading,
+  VStack,
+  Switch,
+  Box,
+} from "native-base";
 
-type Props  = IPressableProps & {
+import { Condition } from "./Condition";
+import { Checkbox } from "./Checkbox";
+import { SecondaryButton } from "@components/SecondaryButton";
+
+type Props = IPressableProps & {
   modalVisible: boolean;
   setModalVisible: (modalVisible: boolean) => void;
-}
+};
 
-export function ModalFilter({modalVisible, setModalVisible}: Props) {
-  const [isActive, setIsActive] = useState(false)
+export function ModalFilter({ modalVisible, setModalVisible }: Props) {
+  const [isActive, setIsActive] = useState(false);
+  
 
   const initialRef = useRef(null);
   const finalRef = useRef(null);
 
-  return <>
-      <Modal isOpen={modalVisible} flex={1} justifyContent="flex-end" onClose={() => setModalVisible(false)} initialFocusRef={initialRef} finalFocusRef={finalRef}>
-        <Modal.Content  w="full">
+  return (
+    <>
+      <Modal
+        isOpen={modalVisible}
+        flex={1}
+        justifyContent="flex-end"
+        onClose={() => setModalVisible(false)}
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+      >
+        <Modal.Content w="full">
           <Modal.CloseButton />
           <Modal.Header>
-            <Text
-              fontFamily="heading"
-              color="gray.100"  
-              fontSize="xl"
-            >
+            <Text fontFamily="heading" color="gray.100" fontSize="xl">
               Filtrar anúncios
             </Text>
           </Modal.Header>
           <Modal.Body>
-
-            <Text
-              fontFamily="heading"
-              color="gray.200"  
-              fontSize="md"
-            >
-             Condição
+            <Text fontFamily="heading" color="gray.200" fontSize="md">
+              Condição
             </Text>
 
-            <HStack>
-              <Pressable 
-                onPress={() => setIsActive(!isActive)}
-                borderRadius="full"
-                bg='gray.500'
-                w={17}
-                h={8}
-                isPressed={isActive}
-                alignItems="center"
-                justifyContent="center"
-                _pressed={{
-                  bg: 'blue.400'
-                }}
-              >
+            <HStack mt={3}>
+              <Condition
+                isActive={!isActive}
+                setIsActive={() => setIsActive(!isActive)}
+              />
 
-                <HStack alignItems="center" w="full" justifyContent="center">
-                  <Heading
-                    color={isActive ? 'white' : 'gray.300'} 
-                    fontFamily="heading"
-                    fontSize="xs" 
-                  >
-                    NOVO
-                  </Heading>
-
-                  {
-                    isActive && 
-                    <Pressable paddingLeft={1}>
-                      <XCircle size={18} color="white"/>
-                    </Pressable>
-                  }
-                </HStack>
-              </Pressable>
+              <Condition
+                isActive={isActive}
+                setIsActive={() => setIsActive(!isActive)}
+              />
             </HStack>
+
+    			<VStack alignItems="flex-start" mt={6}>
+						<Text color="gray.200" fontFamily="heading" fontSize="sm">
+							Aceita troca?
+						</Text>
+
+						<Switch size="lg" p={0} onChange={() => {}} />
+					</VStack>
+
+					<Text color="gray.200" fontFamily="heading" fontSize="sm" mt={2}>
+						Meios de pagamento aceitos
+					</Text>
+
+          <Box mt={3}>
+            <Checkbox />
+          </Box>
 
           </Modal.Body>
           <Modal.Footer>
-            <Button.Group space={2}>
-              <Button variant="ghost" colorScheme="blueGray" onPress={() => {
-              setModalVisible(false);
-            }}>
-                Cancel
-              </Button>
-              <Button onPress={() => {
-              setModalVisible(false);
-            }}>
-                Save
-              </Button>
+            <Button.Group w="full" justifyContent="space-between">
+              <SecondaryButton 
+                title="Resetar filtros"
+              />
+
+              <SecondaryButton 
+                title="Aplicar filtros"
+                variant="secondary"
+              />
             </Button.Group>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
-
-    </>;
+    </>
+  );
 }
