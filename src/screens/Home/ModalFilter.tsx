@@ -16,20 +16,37 @@ import {
 } from "native-base";
 
 import { Condition } from "./Condition";
-import { Checkbox } from "./Checkbox";
 import { SecondaryButton } from "@components/SecondaryButton";
+import { CheckBox } from "@components/CheckBox";
+
 
 type Props = IPressableProps & {
   modalVisible: boolean;
   setModalVisible: (modalVisible: boolean) => void;
 };
 
+const paymentMethods = [
+  "Boleto",
+  "Pix",
+  "Dinheiro",
+  "Cartão de Crédito",
+  "Depósito Bancário"
+]
+
 export function ModalFilter({ modalVisible, setModalVisible }: Props) {
   const [isActive, setIsActive] = useState(false);
+  const [payments, setPayments] = useState<number[]>([]);
   
-
   const initialRef = useRef(null);
   const finalRef = useRef(null);
+
+  function handleTogglePaymentsMethod(paymentIndex: number) {
+    if(payments.includes(paymentIndex)) {
+      setPayments(prevState => prevState.filter(weekDay => weekDay !== paymentIndex))
+    } else {
+      setPayments(prevState => [...prevState, paymentIndex]);
+    }
+  }
 
   return (
     <>
@@ -77,9 +94,16 @@ export function ModalFilter({ modalVisible, setModalVisible }: Props) {
 						Meios de pagamento aceitos
 					</Text>
 
-          <Box mt={3}>
-            <Checkbox />
-          </Box>
+          {
+            paymentMethods.map((payment, index) => (
+              <CheckBox 
+                key={payment}
+                title={payment}
+                checked={payments.includes(index)}
+                onPress={() => handleTogglePaymentsMethod(index)}
+              />
+            ))
+          }
 
           </Modal.Body>
           <Modal.Footer>
