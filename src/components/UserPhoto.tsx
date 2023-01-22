@@ -13,6 +13,7 @@ export function UserPhoto({ size, borderColor = "blue.400", borderWidth = 3, ...
       h={size}
       rounded="full"
       borderWidth={borderWidth}
+      resizeMode="cover"
       borderColor={borderColor}
       {...rest}
     />

@@ -41,7 +41,7 @@ export function Home() {
   ])
 
   return (
-    <VStack flex={1} px={6} mt={12} bg="gray.600">
+    <VStack flex={1} px={6} pt={12} bg="gray.600">
       <VStack>
         <HStack justifyContent="space-between">
           <HStack>

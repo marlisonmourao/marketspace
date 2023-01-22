@@ -5,6 +5,7 @@ import { useFonts, Karla_400Regular, Karla_700Bold } from '@expo-google-fonts/ka
 import { theme } from './src/theme';
 import { Loading } from '@components/Loading';
 import { Home } from '@screens/Home/index';
+import { ProductDetails } from '@screens/ProductDetails';
 
 export default function App() {
 
@@ -18,7 +19,7 @@ export default function App() {
         translucent
       />
 
-      { fontsLoaded ? <Home /> : <Loading /> }
+      { fontsLoaded ? <ProductDetails /> : <Loading /> }
 
     </NativeBaseProvider>
   );

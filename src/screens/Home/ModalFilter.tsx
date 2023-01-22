@@ -30,7 +30,7 @@ const paymentMethods = [
   "Pix",
   "Dinheiro",
   "Cartão de Crédito",
-  "Depósito Bancário"
+  "Depósito Bancário",
 ]
 
 export function ModalFilter({ modalVisible, setModalVisible }: Props) {
