@@ -1,5 +1,5 @@
 import { Header } from "@components/Header";
-import { VStack, Image, HStack, Text, Box } from "native-base";
+import { VStack, Image, HStack, Text, Box, Button } from "native-base";
 
 import { UserPhoto } from "@components/UserPhoto";
 
@@ -55,7 +55,7 @@ export function ProductDetails() {
          </Text>
         </Box>
 
-        <VStack w="full" mt={"10px"}>
+        <VStack w="full">
           <HStack w="full" alignItems="center" justifyContent="space-between">
             <Text
               fontFamily="heading"
@@ -84,8 +84,27 @@ export function ProductDetails() {
 
 
             <VStack>
-             
+              <Box flexDirection="row">
+                <Text fontFamily="heading" fontSize="sm" color="gray.200">Aceita troca?</Text>
+                <Text fontFamily="body" fontSize="sm" color="gray.200" pl={3}>Sim</Text>
+              </Box>
+
+              <Box mt={4}>
+                <Text fontFamily="heading" fontSize="sm" color="gray.200">Meios de pagamento:</Text>
+              </Box>
+
+              <Box w="full" flexDirection="row" rounded={2} alignItems="center" justifyContent="space-between">
+                <Text fontFamily="heading" fontSize="2xl" color="blue.700">R$ 120,00</Text>
+                <Button w={"161px"}>
+                  <Text fontFamily="heading" fontSize="sm" color="gray.700">
+                    Entrar em contato
+                  </Text>
+                </Button>
+
+              </Box>
+
             </VStack>
+
           </VStack>
         </VStack>
       </VStack>
