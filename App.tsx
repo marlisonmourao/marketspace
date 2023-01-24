@@ -2,10 +2,10 @@ import { NativeBaseProvider, StatusBar } from 'native-base'
 
 import { useFonts, Karla_400Regular, Karla_700Bold } from '@expo-google-fonts/karla'
 
-import { theme } from './src/theme';
-import { Loading } from '@components/Loading';
-import { Home } from '@screens/Home/index';
-import { ProductDetails } from '@screens/ProductDetails';
+import { theme } from './src/theme'
+import { Loading } from '@components/Loading'
+import { Routes } from '@routes/index'
+import { Home } from '@screens/Home'
 
 export default function App() {
 
@@ -19,7 +19,7 @@ export default function App() {
         translucent
       />
 
-      { fontsLoaded ? <ProductDetails /> : <Loading /> }
+      { fontsLoaded ? <Routes /> : <Loading /> }
 
     </NativeBaseProvider>
   );

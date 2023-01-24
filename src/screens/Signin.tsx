@@ -6,11 +6,17 @@ import {
   Box,
 } from 'native-base';
 
+import { useNavigation } from '@react-navigation/native';
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
+
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 import { Logo } from '@components/Logo';
 
 export function Signin() {
+
+  const navigate = useNavigation<AuthNavigatorRoutesProps>()
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
@@ -45,6 +51,7 @@ export function Signin() {
 
           <Button 
             title="Criar uma conta"
+            onPress={() => navigate.navigate('signUp')}
           />
         </Center>
       </VStack>

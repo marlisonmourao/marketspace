@@ -4,6 +4,8 @@ import { Center, Text, ScrollView, VStack, Icon, HStack, Pressable } from 'nativ
 
 import userDefault from '@assets/userDefault.png';
 
+import { useNavigation } from '@react-navigation/native';
+
 import { Input } from '@components/Input';
 import { Logo } from '@components/Logo';
 import { UserPhoto } from '@components/UserPhoto';
@@ -11,10 +13,13 @@ import { Button } from '@components/Button';
 
 export function SignUp() {
 
+  const { goBack } = useNavigation()
+
   return (
     <ScrollView
-      contentContainerStyle={{ flexGrow: 1 }}
+      contentContainerStyle={{ flexGrow: 1, paddingBottom: 100 }}
       showsVerticalScrollIndicator={false}
+      
     >
       <VStack flex={1} px={10} bg="gray.600">
         <Center mt={16}>
@@ -70,7 +75,10 @@ export function SignUp() {
             Já tem uma conta?
           </Text>
 
-          <Button title="Ir para o login" />
+          <Button 
+            title="Ir para o login" 
+            onPress={() => goBack()}
+          />
         </Center>
       </VStack>
     </ScrollView>
