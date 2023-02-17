@@ -63,8 +63,9 @@ export function Home() {
 
           <Pressable
             flexDirection="row"
-            w={130}
-            h={42}
+            // px={3}
+            // h={42}
+            p={3}
             bg="gray.100"
             alignItems="center"
             justifyContent="center"
