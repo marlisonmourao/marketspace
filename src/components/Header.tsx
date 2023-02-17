@@ -10,13 +10,9 @@ export function Header() {
         color="#1A181B"
       />
 
-      <Box>
+        <Text>Criar anúncio</Text>
 
-      </Box>
         <Text></Text>
-      <Box>
-        <Text></Text>
-      </Box>
     </HStack>
   )
 }

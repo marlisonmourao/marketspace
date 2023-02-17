@@ -5,16 +5,19 @@ import {
   Heading,
   Pressable,
   FlatList,
-  Box,
 } from "native-base";
 
 import { Plus } from "phosphor-react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { UserPhoto } from "@components/UserPhoto";
-import { Search } from "./Search";
 import { AnnouncementCard } from "./Card/AnnouncementCard";
+
+import { Search } from "./Search";
 import { useState } from "react";
 import { MyAds } from "./MyAds";
+
+import { AppRoutesProps } from "@routes/app.routes";
 
 export function Home() {
   const [product, setProduct] = useState([
@@ -39,6 +42,12 @@ export function Home() {
         newOrUsed: false
       }
   ])
+
+  const navigation = useNavigation<AppRoutesProps>()
+
+  function handleProductDetails() {
+    navigation.navigate('productDetails')
+  }
 
   return (
     <VStack flex={1} px={6} pt={12} bg="gray.600">
@@ -106,7 +115,7 @@ export function Home() {
                   title={item.title}
                   amount={item.amount}
                   newOrUsed={item.newOrUsed} 
-                  
+                  onPress={handleProductDetails}
                 />
             )}
             _contentContainerStyle={{

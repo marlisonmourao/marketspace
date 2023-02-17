@@ -1,12 +1,19 @@
 import { Platform } from 'react-native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import HomeSvg from '@assets/home.svg';
 import { useTheme } from 'native-base';
 
 import { Home } from '@screens/Home'
+import { ProductDetails } from '@screens/ProductDetails';
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
+type AppRoutes = {
+  home: undefined;
+  productDetails: undefined;
+}
+
+export type AppRoutesProps = BottomTabNavigationProp<AppRoutes>
 
 export function AppRoutes() {
   const { colors, sizes } = useTheme()
@@ -37,6 +44,12 @@ export function AppRoutes() {
             <HomeSvg fill={color} width={iconSize} height={iconSize} />
           )
         }}
+      />
+
+      <Screen 
+        name='productDetails'
+        component={ProductDetails}
+        options={{ tabBarButton: () => null }}
       />
     </Navigator>
   )

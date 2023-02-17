@@ -1,23 +1,19 @@
-import { Box, HStack, Image, Text, VStack, Pressable } from "native-base";
+import { Box, HStack, Image, Text, VStack, Pressable, IPressableProps } from "native-base";
 
 import photo from "@assets/tenis.png";
 import { UserPhoto } from "@components/UserPhoto";
 import { NewOrUsed } from "./NewOrUsed";
 
-type Props = {
+type Props = IPressableProps & {
   title: string;
   amount: number;
   newOrUsed: boolean;
 };
 
-function handleOnPress() {
-  console.log('Eai meu caro nobre')
-}
-
-export function AnnouncementCard({title, amount, newOrUsed}: Props) {
+export function AnnouncementCard({title, amount, newOrUsed, ...rest}: Props) {
   return (
     <Box w="47.5%" rounded={6} mb={6} mr={5} >
-      <Pressable onPress={handleOnPress}>
+      <Pressable {...rest}>
         <Image
           source={photo}
           h={100}
